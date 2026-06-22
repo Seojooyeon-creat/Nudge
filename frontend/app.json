@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Nudge",
+    "slug": "nudge",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "com.nudgeapp",
+    "assetBundlePatterns": ["**/*"],
+    "plugins": ["expo-secure-store", "expo-status-bar", "expo-web-browser"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nudge.app"
+    },
+    "android": {
+      "package": "com.nudge.app"
+    }
+  }
+}
