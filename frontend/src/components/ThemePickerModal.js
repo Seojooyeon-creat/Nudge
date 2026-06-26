@@ -3,6 +3,7 @@
 import React from "react";
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { THEMES } from "../lib/themes";
+import Emoji from "./Emoji";
 
 const MINI_DECO_POS = {
   "bottom-right": { right: -8, bottom: -8 },
@@ -50,9 +51,11 @@ function ThemePreview({ theme }) {
         <Text style={[styles.miniArrow, { color: theme.arrowColor }]}>▲</Text>
       </View>
       {deco ? (
-        <Text style={[styles.miniDeco, MINI_DECO_POS[deco.position] || MINI_DECO_POS["bottom-right"]]}>
-          {deco.emoji}
-        </Text>
+        <Emoji
+          char={deco.emoji}
+          size={22}
+          style={[styles.miniDeco, MINI_DECO_POS[deco.position] || MINI_DECO_POS["bottom-right"]]}
+        />
       ) : null}
     </View>
   );
@@ -130,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 4,
   },
-  miniChar: { fontSize: 13, fontWeight: "700", lineHeight: 15 },
+  miniChar: { fontFamily: "NanumPenScript", fontSize: 17, lineHeight: 16 },
   miniPlus: { fontSize: 16 },
   miniTrack: { alignItems: "flex-start", paddingLeft: 12, height: 14 },
   miniArrow: { fontSize: 12, fontWeight: "900" },

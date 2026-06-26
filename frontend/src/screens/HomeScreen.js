@@ -15,6 +15,7 @@ import { koreanTimeAgo } from "../lib/time";
 import { DEFAULT_STATUS } from "../lib/status";
 import { useAuth } from "../context/AuthContext";
 import DoorSign from "../components/DoorSign";
+import Emoji from "../components/Emoji";
 import StatusEditorModal from "../components/StatusEditorModal";
 import AddFriendModal from "../components/AddFriendModal";
 import FriendRequestsModal from "../components/FriendRequestsModal";
@@ -216,9 +217,9 @@ export default function HomeScreen() {
                   { borderColor: fTheme.frame.borderColor, backgroundColor: fTheme.cellActiveBg },
                 ]}
               >
-                <Text style={styles.friendEmoji}>{status.emoji}</Text>
+                <Emoji char={status.emoji} size={30} style={styles.friendEmoji} />
                 {fTheme.decoration ? (
-                  <Text style={styles.friendDeco}>{fTheme.decoration.emoji}</Text>
+                  <Emoji char={fTheme.decoration.emoji} size={16} style={styles.friendDeco} />
                 ) : null}
               </View>
               <View style={styles.friendInfo}>
@@ -349,7 +350,7 @@ const styles = StyleSheet.create({
   friendDeco: { position: "absolute", right: -6, bottom: -6, fontSize: 16 },
   friendInfo: { flex: 1 },
   friendName: { fontSize: 16, fontWeight: "600" },
-  friendLabel: { fontSize: 14, color: "#444", marginTop: 2 },
+  friendLabel: { fontFamily: "NanumPenScript", fontSize: 18, color: "#444", marginTop: 2 },
   timeAgo: { fontSize: 12, color: "#aaa", marginTop: 2 },
   nudges: { flexDirection: "row", gap: 12 },
   nudgeEmoji: { fontSize: 22 },

@@ -9,6 +9,7 @@
 import React from "react";
 import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
 import { getTheme } from "../lib/themes";
+import Emoji from "./Emoji";
 
 // --- tiny color helper: lighten (amt>0) / darken (amt<0) a #rrggbb hex --------
 function shade(hex, amt) {
@@ -158,7 +159,7 @@ export default function DoorSign({
                   >
                     {slot ? (
                       <>
-                        <Text style={styles.cellEmoji}>{slot.emoji}</Text>
+                        <Emoji char={slot.emoji} size={26} style={styles.cellEmoji} />
                         <VerticalLabel
                           text={slot.label}
                           active={active}
@@ -191,9 +192,11 @@ export default function DoorSign({
         </View>
 
         {deco ? (
-          <Text style={[styles.decoration, DECO_POS[deco.position] || DECO_POS["bottom-right"]]}>
-            {deco.emoji}
-          </Text>
+          <Emoji
+            char={deco.emoji}
+            size={40}
+            style={[styles.decoration, DECO_POS[deco.position] || DECO_POS["bottom-right"]]}
+          />
         ) : null}
       </View>
 
@@ -253,10 +256,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 2,
   },
-  cellEmoji: { fontSize: 20, marginBottom: 4 },
+  cellEmoji: { marginBottom: 4 },
   vstack: { alignItems: "center" },
-  vchar: { fontSize: 15, lineHeight: 18, fontWeight: "600" },
-  vcharActive: { fontWeight: "800" },
+  // 나눔손글씨 펜: a thin handwritten pen face, so the label reads as written by
+  // hand. The font is single-weight, so emphasis on the active cell comes from
+  // color/size (set in VerticalLabel) rather than fontWeight.
+  vchar: { fontFamily: "NanumPenScript", fontSize: 20, lineHeight: 20 },
+  vcharActive: { fontSize: 23 },
   plus: { fontSize: 22, marginTop: 48 },
 
   // Screws.
